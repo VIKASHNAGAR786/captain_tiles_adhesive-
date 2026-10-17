@@ -1,0 +1,58 @@
+:host {
+  display: block;
+  animation-duration: .8s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(.22, 1, .36, 1);
+  animation-delay: var(--animation-delay, 0ms);
+}
+
+:host(.fade-up) {
+  animation-name: fade-up;
+}
+
+:host(.fade-in) {
+  animation-name: fade-in;
+}
+
+:host(.slide-left) {
+  animation-name: slide-left;
+}
+
+:host(.slide-right) {
+  animation-name: slide-right;
+}
+
+:host(.scale-in) {
+  animation-name: scale-in;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(1.25rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-left {
+  from { opacity: 0; transform: translateX(1.5rem); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-right {
+  from { opacity: 0; transform: translateX(-1.5rem); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host {
+    animation: none;
+  }
+}
