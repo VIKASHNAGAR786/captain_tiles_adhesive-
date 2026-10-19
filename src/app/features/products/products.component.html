@@ -1,0 +1,50 @@
+<main class="products-page">
+  <section class="products-hero">
+    <div class="section-shell products-hero__inner">
+      <a class="back-link" routerLink="/">← Back home</a>
+      <p class="eyebrow eyebrow--light">Product catalogue</p>
+      <h1>Tile adhesive<br /><em>that holds.</em></h1>
+      <p>Four dependable formulations for the surfaces, sites and standards that matter.</p>
+    </div>
+  </section>
+
+  <section class="section-shell products-catalogue">
+    <div class="catalogue-heading">
+      <div>
+        <p class="eyebrow">The Captain range</p>
+        <h2>Choose your<br /><em>right bond.</em></h2>
+      </div>
+      <p>Made in Baran, Rajasthan<br />20 kg bags · Wall + floor</p>
+    </div>
+
+    <div class="products-grid">
+      @for (product of products; track product.slug) {
+        <article class="catalogue-card">
+          <div class="catalogue-card__image">
+            <span class="catalogue-card__number">{{ product.number }}</span>
+            <img [src]="product.image" [alt]="'Captain ' + product.name + ' tile adhesive 20 kg bag'" />
+          </div>
+          <div class="catalogue-card__body">
+            <p class="catalogue-card__kicker">Captain / {{ product.grade }}</p>
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+            <ul>
+              <li>Strong, dependable bonding</li>
+              <li>Interior + exterior use</li>
+              <li>Ready for wall + floor work</li>
+            </ul>
+            <a class="button button--dark" [routerLink]="'/products/' + product.slug">View product <span>↗</span></a>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="products-cta section-shell">
+    <div>
+      <p class="eyebrow">Need help choosing?</p>
+      <h2>Talk to the<br /><em>Captain team.</em></h2>
+    </div>
+    <a class="button button--gold" routerLink="/contact">Send an enquiry <span>↗</span></a>
+  </section>
+</main>
