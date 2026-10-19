@@ -29,6 +29,23 @@ jobs:
         run: npm ci
       - name: Build Angular app
         run: npm run build -- --configuration production
+      - name: Create GitHub Pages route entry points
+        run: |
+          site="dist/captain-tiles-adhesive/browser"
+          while IFS= read -r route; do
+            mkdir -p "$site/$route"
+            cp "$site/index.html" "$site/$route/index.html"
+          done <<'EOF'
+          products
+          products/captain-dura-bond
+          products/captain-dura-grip
+          products/captain-dura-stick
+          products/captain-dura-shield
+          about
+          blog
+          contact
+          trade-enquiry
+          EOF
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload Pages artifact
