@@ -28,7 +28,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const productTitle = `Captain ${this.product.name} Tile Adhesive | Captain Tiles Adhesive`;
-    const url = `https://www.captaintilesadhesive.in/products/${this.product.slug}`;
+    const url = `https://www.captaintilesadhesive.in/products/${this.product.slug}/`;
     this.title.setTitle(productTitle);
     this.meta.updateTag({ name: 'description', content: this.product.seoDescription });
     this.meta.updateTag({ name: 'keywords', content: this.product.keywords });
