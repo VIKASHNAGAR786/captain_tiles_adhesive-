@@ -1,39 +1,86 @@
 <header class="site-header">
   <div class="site-header__inner section-shell">
     <a class="brand" routerLink="/" aria-label="Captain Tiles Adhesive home" (click)="closeMenu()">
-      <span class="brand-mark">
+      <span class="brand-mascot">
         <img
-          src="/assets/images/brand/captain-logo.jpeg"
-          alt="Captain mascot logo"
-          width="102"
-          height="48"
+          src="/assets/images/brand/captain-mascot.png"
+          alt="Captain mascot"
+          width="48"
+          height="35"
           loading="eager"
           decoding="async"
         />
       </span>
-      <span class="brand-name">CAPTAIN<small>TILES ADHESIVE</small></span>
+      <span class="brand-text">
+        <span class="brand-text__title">CAPTAIN</span>
+        <span class="brand-text__sub">TILES ADHESIVE</span>
+      </span>
     </a>
 
     <button
       class="menu-toggle"
+      [class.menu-toggle--active]="menuOpen()"
       type="button"
       [attr.aria-expanded]="menuOpen()"
       aria-controls="main-navigation"
+      aria-label="Toggle navigation menu"
       (click)="toggleMenu()"
     >
-      <span></span>
-      <span></span>
-      <span></span>
+      <span class="menu-toggle__line menu-toggle__line--1"></span>
+      <span class="menu-toggle__line menu-toggle__line--2"></span>
+      <span class="menu-toggle__line menu-toggle__line--3"></span>
       <span class="visually-hidden">Toggle navigation</span>
     </button>
 
     <nav id="main-navigation" class="site-nav" [class.site-nav--open]="menuOpen()" aria-label="Main navigation">
-      <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Home</a>
-      <a routerLink="/products" routerLinkActive="is-active" (click)="closeMenu()">Products</a>
-      <a routerLink="/about" routerLinkActive="is-active" (click)="closeMenu()">About</a>
-      <a routerLink="/blog" routerLinkActive="is-active" (click)="closeMenu()">Blog</a>
-      <a routerLink="/contact" routerLinkActive="is-active" (click)="closeMenu()">Contact</a>
-      <a class="trade-link" routerLink="/trade-enquiry" (click)="closeMenu()">Trade enquiry</a>
+      <div class="nav-links">
+        <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">
+          <span class="nav-num">01</span>
+          <span class="nav-label">Home</span>
+          <span class="nav-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a routerLink="/products" routerLinkActive="is-active" (click)="closeMenu()">
+          <span class="nav-num">02</span>
+          <span class="nav-label">Products Catalogue</span>
+          <span class="nav-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a routerLink="/about" routerLinkActive="is-active" (click)="closeMenu()">
+          <span class="nav-num">03</span>
+          <span class="nav-label">About Us</span>
+          <span class="nav-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a routerLink="/blog" routerLinkActive="is-active" (click)="closeMenu()">
+          <span class="nav-num">04</span>
+          <span class="nav-label">Journal &amp; Guides</span>
+          <span class="nav-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a routerLink="/contact" routerLinkActive="is-active" (click)="closeMenu()">
+          <span class="nav-num">05</span>
+          <span class="nav-label">Contact</span>
+          <span class="nav-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <div class="nav-actions">
+        <a class="nav-trade-btn" routerLink="/trade-enquiry" (click)="closeMenu()">
+          <span>Trade &amp; Dealership Enquiry</span>
+          <span class="trade-arrow">↗</span>
+        </a>
+      </div>
+
+      <div class="nav-dock">
+        <div class="nav-dock__links">
+          <a class="nav-dock__item" href="tel:+917976369073">
+            <svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16"><path fill="currentColor" d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg>
+            <span>+91 7976369073</span>
+          </a>
+          <a class="nav-dock__item nav-dock__item--whatsapp" href="https://wa.me/917976369073" target="_blank" rel="noopener">
+            <svg viewBox="0 0 32 32" aria-hidden="true" width="16" height="16"><path fill="currentColor" d="M16 3.2a12.8 12.8 0 0 0-11 19.3L3.3 29l6.7-1.7A12.8 12.8 0 1 0 16 3.2Zm0 23.2c-2 0-4-.5-5.7-1.6l-.4-.2-4 .9 1-3.8-.3-.4A10.4 10.4 0 1 1 16 26.4Zm5.7-7.8c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.6-.8-2.7-1.5-3.8-3.3-.3-.5.3-.5.8-1.7.1-.2.1-.4 0-.6l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1-1.1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.4 5.3 4.7 2 .9 2.8 1 3.8.8.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4Z"/></svg>
+            <span>WhatsApp Us</span>
+          </a>
+        </div>
+        <p class="nav-location"><span aria-hidden="true">📍</span> Baran Plant, Rajasthan, India</p>
+      </div>
     </nav>
 
     <a class="header-contact" href="tel:+917976369073">
@@ -42,6 +89,7 @@
   </div>
 </header>
 
+<!-- Dimming & blurring backdrop on mobile when menu is open -->
 <button
   class="menu-backdrop"
   [class.menu-backdrop--visible]="menuOpen()"
@@ -70,15 +118,20 @@
   <div class="section-shell site-footer__grid">
     <div>
       <a class="brand brand--footer" routerLink="/" aria-label="Captain Tiles Adhesive home">
-        <img
-          src="/assets/images/brand/captain-logo.jpeg"
-          alt="Captain logo"
-          width="102"
-          height="48"
-          loading="lazy"
-          decoding="async"
-        />
-        <span>CAPTAIN<br /><small>TILES ADHESIVE</small></span>
+        <span class="brand-mascot brand-mascot--footer">
+          <img
+            src="/assets/images/brand/captain-mascot.png"
+            alt="Captain logo"
+            width="48"
+            height="35"
+            loading="lazy"
+            decoding="async"
+          />
+        </span>
+        <span class="brand-text">
+          <span class="brand-text__title">CAPTAIN</span>
+          <span class="brand-text__sub">TILES ADHESIVE</span>
+        </span>
       </a>
       <p>Dependable tile adhesive, made in Baran.</p>
     </div>

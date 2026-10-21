@@ -12,9 +12,18 @@ export class App {
 
   closeMenu(): void {
     this.menuOpen.set(false);
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = '';
+    }
   }
 
   toggleMenu(): void {
-    this.menuOpen.update((isOpen) => !isOpen);
+    this.menuOpen.update((isOpen) => {
+      const next = !isOpen;
+      if (typeof document !== 'undefined') {
+        document.body.style.overflow = next ? 'hidden' : '';
+      }
+      return next;
+    });
   }
 }
