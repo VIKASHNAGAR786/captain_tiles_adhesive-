@@ -1,18 +1,140 @@
 <main class="product-page section-shell">
   <a class="back-link" routerLink="/products">← Back to products</a>
-  <section class="product-hero"><div class="product-hero__image"><img [src]="product.image" [alt]="'Captain ' + product.name + ' 20 kg tile adhesive bag'" /></div><div class="product-hero__copy"><p class="eyebrow">Captain / {{ product.name }} / {{ product.number }}</p><h1>Superior grip<br /><em>technology.</em></h1><p class="product-kicker">Premium Tile Adhesive | Made in India</p><p>{{ description }}</p><div class="product-actions"><a class="button button--gold" href="https://wa.me/917976369073" target="_blank" rel="noopener">Request pricing ↗</a><a class="text-link" href="tel:+917976369073">Call +91 7976369073</a></div></div></section>
 
-  <section class="detail-section detail-section--split"><div><p class="eyebrow">01 / Product description</p><h2>A bond built<br /><em>for the site.</em></h2></div><p class="detail-copy">{{ description }}</p></section>
+  <section class="product-hero">
+    <div class="product-hero__image">
+      <img
+        [src]="product.image"
+        [alt]="'Captain ' + product.name + ' 20 kg tile adhesive bag'"
+        width="450"
+        height="450"
+        fetchpriority="high"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+    <div class="product-hero__copy">
+      <p class="eyebrow">Captain / {{ product.name }} / {{ product.number }}</p>
+      <h1>Superior grip<br /><em>technology.</em></h1>
+      <p class="product-kicker">Premium Tile Adhesive | Made in India</p>
+      <p>{{ description }}</p>
+      <div class="product-actions">
+        <a class="button button--gold" href="https://wa.me/917976369073" target="_blank" rel="noopener">Request pricing ↗</a>
+        <a class="text-link" href="tel:+917976369073">Call +91 7976369073</a>
+      </div>
+    </div>
+  </section>
 
-  <section class="detail-section"><div class="section-heading"><p class="eyebrow">02 / Features & benefits</p><h2>What makes it<br /><em>work better.</em></h2></div><div class="detail-list-grid">@for (benefit of benefits; track benefit) { <div class="detail-list-item"><span>✓</span><p>{{ benefit }}</p></div> }</div></section>
+  <section class="detail-section detail-section--split">
+    <div>
+      <p class="eyebrow">01 / Product description</p>
+      <h2>A bond built<br /><em>for the site.</em></h2>
+    </div>
+    <p class="detail-copy">{{ description }}</p>
+  </section>
 
-  <section class="detail-section detail-section--sand"><div class="section-heading"><p class="eyebrow">03 / Ideal for</p><h2>Made for the<br /><em>right surface.</em></h2></div><div class="ideal-grid">@for (tile of idealFor; track tile) { <div class="ideal-item"><span class="tile-icon"></span><strong>{{ tile }}</strong></div> }</div></section>
+  <section class="detail-section">
+    <div class="section-heading">
+      <p class="eyebrow">02 / Features & benefits</p>
+      <h2>What makes it<br /><em>work better.</em></h2>
+    </div>
+    <div class="detail-list-grid">
+      @for (benefit of benefits; track benefit) {
+        <div class="detail-list-item">
+          <span>✓</span>
+          <p>{{ benefit }}</p>
+        </div>
+      }
+    </div>
+  </section>
 
-  <section class="detail-section"><div class="section-heading"><p class="eyebrow">04 / Directions for use</p><h2>From powder<br />to <em>progress.</em></h2></div><div class="directions-grid">@for (direction of directions; track direction; let index = $index) { <div class="direction-item"><span>0{{ index + 1 }}</span><p>{{ direction }}</p></div> }</div></section>
+  <section class="detail-section detail-section--sand">
+    <div class="section-heading">
+      <p class="eyebrow">03 / Ideal for</p>
+      <h2>Made for the<br /><em>right surface.</em></h2>
+    </div>
+    <div class="ideal-grid">
+      @for (tile of idealFor; track tile) {
+        <div class="ideal-item">
+          <span class="tile-icon" aria-hidden="true"></span>
+          <strong>{{ tile }}</strong>
+        </div>
+      }
+    </div>
+  </section>
 
-  <section class="technical-section"><div class="technical-heading"><p class="eyebrow">05 / Technical information</p><h2>The numbers<br /><em>that matter.</em></h2><p>Values transcribed from the supplied product information. Please verify final printed values before publication.</p></div><div class="technical-table"><div class="technical-table__head"><span>Parameter</span><span>Specification</span></div>@for (spec of specifications; track spec[0]) { <div class="technical-row"><span>{{ spec[0] }}</span><strong>{{ spec[1] }}</strong></div> }</div></section>
+  <section class="detail-section">
+    <div class="section-heading">
+      <p class="eyebrow">04 / Directions for use</p>
+      <h2>From powder<br />to <em>progress.</em></h2>
+    </div>
+    <div class="directions-grid">
+      @for (direction of directions; track direction; let index = $index) {
+        <div class="direction-item">
+          <span>0{{ index + 1 }}</span>
+          <p>{{ direction }}</p>
+        </div>
+      }
+    </div>
+  </section>
 
-  <section class="detail-section detail-section--split"><div><p class="eyebrow">06 / Precautions</p><h2>Store it.<br /><em>Use it well.</em></h2></div><div><ul class="precaution-list">@for (precaution of precautions; track precaution) { <li>{{ precaution }}</li> }</ul><div class="product-information"><p class="eyebrow">07 / Product information</p><div><span>Brand</span><strong>CAPTAIN</strong></div><div><span>Product</span><strong>Tiles Adhesive</strong></div><div><span>Net weight</span><strong>20 kg</strong></div><div><span>Colours</span><strong>White & Grey</strong></div><div><span>Origin</span><strong>Made in India</strong></div><div><span>Manufacturer / Marketer</span><strong>Patel Sons Enterprises</strong></div><div><span>Location</span><strong>Rajasthan, India (325205)</strong></div></div></div></section>
+  <section class="technical-section">
+    <div class="technical-heading">
+      <p class="eyebrow">05 / Technical information</p>
+      <h2>The numbers<br /><em>that matter.</em></h2>
+      <p>Values transcribed from the supplied product information. Please verify final printed values before publication.</p>
+    </div>
+    <div class="technical-table">
+      <div class="technical-table__head">
+        <span>Parameter</span>
+        <span>Specification</span>
+      </div>
+      @for (spec of specifications; track spec[0]) {
+        <div class="technical-row">
+          <span>{{ spec[0] }}</span>
+          <strong>{{ spec[1] }}</strong>
+        </div>
+      }
+    </div>
+  </section>
 
-  <section class="product-label"><img [src]="'/assets/images/products/captain-dura-bond-specifications.jpeg'" alt="Captain Tiles Adhesive product label and application information" /><div><p class="eyebrow">Have a project in mind?</p><h2>Talk to<br /><em>Captain.</em></h2><a class="button button--dark" routerLink="/contact">Send an enquiry <span>↗</span></a></div></section>
+  <section class="detail-section detail-section--split">
+    <div>
+      <p class="eyebrow">06 / Precautions</p>
+      <h2>Store it.<br /><em>Use it well.</em></h2>
+    </div>
+    <div>
+      <ul class="precaution-list">
+        @for (precaution of precautions; track precaution) {
+          <li>{{ precaution }}</li>
+        }
+      </ul>
+      <div class="product-information">
+        <p class="eyebrow">07 / Product information</p>
+        <div><span>Brand</span><strong>CAPTAIN</strong></div>
+        <div><span>Product</span><strong>Tiles Adhesive</strong></div>
+        <div><span>Net weight</span><strong>20 kg</strong></div>
+        <div><span>Colours</span><strong>White & Grey</strong></div>
+        <div><span>Origin</span><strong>Made in India</strong></div>
+        <div><span>Manufacturer / Marketer</span><strong>Patel Sons Enterprises</strong></div>
+        <div><span>Location</span><strong>Rajasthan, India (325205)</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="product-label">
+    <img
+      src="/assets/images/products/captain-dura-bond-specifications.jpeg"
+      alt="Captain Tiles Adhesive product label and application information"
+      width="600"
+      height="450"
+      loading="lazy"
+      decoding="async"
+    />
+    <div>
+      <p class="eyebrow">Have a project in mind?</p>
+      <h2>Talk to<br /><em>Captain.</em></h2>
+      <a class="button button--dark" routerLink="/contact">Send an enquiry <span>↗</span></a>
+    </div>
+  </section>
 </main>

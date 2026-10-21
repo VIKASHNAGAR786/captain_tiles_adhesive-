@@ -22,7 +22,14 @@
         <article class="catalogue-card">
           <div class="catalogue-card__image">
             <span class="catalogue-card__number">{{ product.number }}</span>
-            <img [src]="product.image" [alt]="'Captain ' + product.name + ' tile adhesive 20 kg bag'" />
+            <img
+              [src]="product.image"
+              [alt]="'Captain ' + product.name + ' tile adhesive 20 kg bag'"
+              width="400"
+              height="400"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <div class="catalogue-card__body">
             <p class="catalogue-card__kicker">Captain / {{ product.grade }}</p>

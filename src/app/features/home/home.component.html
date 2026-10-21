@@ -1,20 +1,3 @@
-<style>
-  .catalogue-controls { display: flex; justify-content: space-between; align-items: center; margin-top: 3rem; color: var(--gold-deep); font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-  .catalogue-controls i { margin: 0 .4rem; color: var(--muted); font-style: normal; }
-  .carousel-button { width: 46px; height: 46px; margin-left: .5rem; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; font-size: 1.2rem; transition: color .2s ease, background .2s ease, transform .2s ease; }
-  .carousel-button:hover { background: var(--ink); color: white; transform: translateY(-2px); }
-  .product-card--featured { grid-template-columns: 1.1fr .9fr; grid-template-rows: minmax(500px, 58vh); margin-top: 1rem; }
-  .product-card--featured .product-card__image { height: 100%; }
-  .product-card--featured .product-card__image img { object-fit: contain; padding: 2rem; }
-  .product-card--featured .product-card__body { align-content: center; padding: clamp(2rem, 5vw, 5rem); }
-  .product-card--featured h3 { font-size: clamp(2.8rem, 5vw, 5.4rem); }
-  .product-card--featured p { max-width: 360px; min-height: auto; font-size: 1rem; }
-  .product-card__meta { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 2.2rem; }
-  .product-card__meta span { padding: .55rem .7rem; border: 1px solid var(--line); color: var(--muted); font-size: .65rem; letter-spacing: .08em; text-transform: uppercase; }
-  .product-card--pink .product-card__image { background: #e56d98; }
-  @media (max-width: 800px) { .product-card--featured { grid-template-columns: 1fr; grid-template-rows: minmax(420px, 58vh) auto; } .product-card--featured .product-card__body { padding: 2rem; } }
-  @media (max-width: 520px) { .product-card--featured { grid-template-rows: minmax(370px, 55vh) auto; } .product-card--featured .product-card__image img { padding: 1rem; } }
-</style>
 <main>
   <section class="hero section-shell">
     <div class="hero__copy">
@@ -33,16 +16,58 @@
     
     <div class="hero__visual">
       <div class="hero__halo"></div>
-      <img src="/assets/images/products/captain-dura-bond-bag.jpeg" alt="Captain Dura Bond tile adhesive 20 kilogram bag" />
+      <img
+        src="/assets/images/products/captain-dura-bond-bag.jpeg"
+        alt="Captain Dura Bond tile adhesive 20 kilogram bag"
+        width="430"
+        height="430"
+        fetchpriority="high"
+        loading="eager"
+        decoding="async"
+      />
       <div class="hero__label"><span>CAPTAIN</span><strong>DURA BOND</strong><small>Tile adhesive · 20 kg</small></div>
     </div>
   </section>
 
-  <section class="catalogue catalogue--hero section-shell section-block">
-    <div class="section-heading section-heading--row"><div><p class="eyebrow">The Captain range</p><h2>Choose the right<br /><em>adhesive.</em></h2></div><p class="section-heading__note">Explore our four products<br />and their applications.</p></div>
-    <div class="catalogue-controls"><span>0{{ selectedProduct() + 1 }} <i>/</i> 0{{ products.length }}</span><div><button type="button" class="carousel-button" (click)="showPreviousProduct()" aria-label="Previous product">←</button><button type="button" class="carousel-button" (click)="showNextProduct()" aria-label="Next product">→</button></div></div>
+  <section class="catalogue catalogue--hero section-shell section-block" aria-label="Captain product range carousel">
+    <div class="section-heading section-heading--row">
+      <div>
+        <p class="eyebrow">The Captain range</p>
+        <h2>Choose the right<br /><em>adhesive.</em></h2>
+      </div>
+      <p class="section-heading__note">Explore our four products<br />and their applications.</p>
+    </div>
+    <div class="catalogue-controls">
+      <span>0{{ selectedProduct() + 1 }} <i>/</i> 0{{ products.length }}</span>
+      <div>
+        <button type="button" class="carousel-button" (click)="showPreviousProduct()" aria-label="Previous product">←</button>
+        <button type="button" class="carousel-button" (click)="showNextProduct()" aria-label="Next product">→</button>
+      </div>
+    </div>
     @if (products[selectedProduct()]; as product) {
-      <article class="product-card product-card--featured" [class.product-card--pink]="selectedProduct() === 1"><div class="product-card__image"><img [src]="product.image" [alt]="'Captain ' + product.name + ' tile adhesive bag'" /></div><div class="product-card__body"><span>{{ product.number }} / {{ product.grade }}</span><h3>Captain<br /><em>{{ product.name }}</em></h3><p>{{ product.description }}</p><div class="product-card__meta"><span>20 kg</span><span>Made in India</span><span>Wall + floor</span></div><a class="text-link" [routerLink]="'/products/' + product.slug">View specifications <span>↗</span></a></div></article>
+      <article class="product-card product-card--featured" [class.product-card--pink]="selectedProduct() === 1">
+        <div class="product-card__image">
+          <img
+            [src]="product.image"
+            [alt]="'Captain ' + product.name + ' tile adhesive bag'"
+            width="400"
+            height="400"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="product-card__body">
+          <span>{{ product.number }} / {{ product.grade }}</span>
+          <h3>Captain<br /><em>{{ product.name }}</em></h3>
+          <p>{{ product.description }}</p>
+          <div class="product-card__meta">
+            <span>20 kg</span>
+            <span>Made in India</span>
+            <span>Wall + floor</span>
+          </div>
+          <a class="text-link" [routerLink]="'/products/' + product.slug">View specifications <span>↗</span></a>
+        </div>
+      </article>
     }
   </section>
 
@@ -62,7 +87,7 @@
     </div>
   </section>
 
-  <section class="section-shell section-block">
+  <section class="section-shell section-block" aria-label="Why choose Captain">
     <div class="section-heading"><p class="eyebrow">Why Captain</p><h2>Made for the work<br /><em>in front of you.</em></h2></div>
     <div class="benefit-grid">
       @for (benefit of benefits; track benefit.number) {
@@ -78,14 +103,31 @@
       <div class="product-feature__seal">01<br /><small>THE<br />CAPTAIN<br />STANDARD</small></div>
       <div class="product-feature__visual-bottom"><span>STRONG BONDING</span><span>WALL + FLOOR</span><span>MADE IN INDIA</span></div>
     </div>
-    <div class="product-feature__copy"><p class="eyebrow">Featured product / 01</p><h2>Captain Tiles Adhesive<br /><em>Dura Bond.</em></h2><p>A polymer-modified thin-set adhesive designed for ceramic, vitrified and porcelain tiles on horizontal and vertical surfaces.</p><div class="tag-row"><span>Interior + exterior</span><span>Wall + floor</span><span>20 kg</span></div><a class="button button--gold" routerLink="/products/captain-dura-bond">View product details <span>↗</span></a></div>
-  </section>
-
-  <section class="process section-block">
-    <div class="section-shell"><div class="section-heading section-heading--row"><div><p class="eyebrow">Simple on site</p><h2>A better bond,<br /><em>step by step.</em></h2></div><p class="section-heading__note">Clear directions. Confident application.<br />Less guesswork on every project.</p></div>
-      <div class="process-grid">@for (step of steps; track $index) { <div class="process-step"><span>0{{ $index + 1 }}</span><p>{{ step }}</p></div> }</div>
+    <div class="product-feature__copy">
+      <p class="eyebrow">Featured product / 01</p>
+      <h2>Captain Tiles Adhesive<br /><em>Dura Bond.</em></h2>
+      <p>A polymer-modified thin-set adhesive designed for ceramic, vitrified and porcelain tiles on horizontal and vertical surfaces.</p>
+      <div class="tag-row"><span>Interior + exterior</span><span>Wall + floor</span><span>20 kg</span></div>
+      <a class="button button--gold" routerLink="/products/captain-dura-bond">View product details <span>↗</span></a>
     </div>
   </section>
 
-  <section class="cta section-shell"><div><p class="eyebrow">Have a project in mind?</p><h2>Let’s put the right<br /><em>material to work.</em></h2></div><a class="button button--light" routerLink="/contact">Send an enquiry <span>↗</span></a></section>
+  <section class="process section-block" aria-label="Application process">
+    <div class="section-shell">
+      <div class="section-heading section-heading--row">
+        <div><p class="eyebrow">Simple on site</p><h2>A better bond,<br /><em>step by step.</em></h2></div>
+        <p class="section-heading__note">Clear directions. Confident application.<br />Less guesswork on every project.</p>
+      </div>
+      <div class="process-grid">
+        @for (step of steps; track $index) {
+          <div class="process-step"><span>0{{ $index + 1 }}</span><p>{{ step }}</p></div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="cta section-shell">
+    <div><p class="eyebrow">Have a project in mind?</p><h2>Let’s put the right<br /><em>material to work.</em></h2></div>
+    <a class="button button--light" routerLink="/contact">Send an enquiry <span>↗</span></a>
+  </section>
 </main>
