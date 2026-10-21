@@ -196,10 +196,310 @@ input, select, textarea {
   }
 }
 
+/* ==========================================================================
+   The Architectural Precision Grid & Living Mortar Background
+   ========================================================================== */
+.architectural-grid-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  contain: strict;
+  /* Smooth vignette fade around edges and towards bottom */
+  mask-image: radial-gradient(ellipse 95% 85% at 50% 35%, black 40%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse 95% 85% at 50% 35%, black 40%, transparent 95%);
+}
+
+/* 1. Structural Blueprint Orthogonal Grid (Tile Modularity) */
+.architectural-grid-bg .grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgb(23 23 19 / 4.5%) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(23 23 19 / 4.5%) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* 2. Precision Tile Spacer Crosshairs at Every Joint */
+.architectural-grid-bg .grid-crosshairs {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgb(215 169 76 / 35%) 1.5px, transparent 0);
+  background-size: 64px 64px;
+}
+
+/* 3. The Living Mortar / Optical Horizontal Laser Sweep */
+.architectural-grid-bg .grid-laser {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgb(215 169 76 / 14%) 0%,
+    rgb(215 169 76 / 3%) 40px,
+    transparent 90px
+  );
+  border-bottom: 2px solid rgb(215 169 76 / 85%);
+  box-shadow:
+    0 2px 14px rgb(215 169 76 / 60%),
+    0 4px 28px rgb(215 169 76 / 30%);
+  mask-image: linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%);
+  transform: translateY(-100%);
+  animation: mortar-laser-glide 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+}
+
+/* Vertical Laser Beam traversing perpendicular */
+.architectural-grid-bg .grid-laser-vertical {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    to left,
+    rgb(215 169 76 / 10%) 0%,
+    rgb(215 169 76 / 2%) 40px,
+    transparent 80px
+  );
+  border-right: 2px solid rgb(215 169 76 / 75%);
+  box-shadow: 2px 0 14px rgb(215 169 76 / 50%);
+  mask-image: linear-gradient(180deg, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 15%, black 85%, transparent 100%);
+  transform: translateX(-100%);
+  animation: mortar-laser-vert-glide 8s cubic-bezier(0.4, 0, 0.2, 1) 3s infinite;
+  will-change: transform, opacity;
+}
+
+/* 4. Option B: Soft Liquid Golden Ambient Glow (Multi-Orb Organic Drifting) */
+.architectural-grid-bg .grid-ambient-glow {
+  position: absolute;
+  inset: -15%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  filter: blur(65px);
+  -webkit-filter: blur(65px);
+  transform: translateZ(0); /* Hardware accelerated compositing */
+}
+
+/* Ambient Floating Orbs */
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* Primary Gold Core: Positioned behind hero product bag & central focal point */
+.ambient-orb--primary {
+  top: 15%;
+  right: 12%;
+  width: min(520px, 60vw);
+  height: min(520px, 60vw);
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgb(215 169 76 / 26%) 0%,
+    rgb(227 187 101 / 16%) 45%,
+    transparent 72%
+  );
+  animation: ambient-orb-primary-drift 14s ease-in-out infinite alternate;
+}
+
+/* Secondary Warm Terracotta Amber: Behind headline copy to create tonal depth */
+.ambient-orb--secondary {
+  top: 22%;
+  left: 6%;
+  width: min(460px, 52vw);
+  height: min(460px, 52vw);
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgb(194 138 45 / 18%) 0%,
+    rgb(230 190 110 / 10%) 45%,
+    transparent 72%
+  );
+  animation: ambient-orb-secondary-drift 18s ease-in-out infinite alternate;
+}
+
+/* Tertiary Champagne Core: Low ground radiance to lift shadows */
+.ambient-orb--tertiary {
+  bottom: 8%;
+  left: 32%;
+  width: min(480px, 55vw);
+  height: min(320px, 40vw);
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgb(245 220 145 / 16%) 0%,
+    rgb(215 169 76 / 8%) 50%,
+    transparent 80%
+  );
+  animation: ambient-orb-tertiary-pulse 11s ease-in-out infinite alternate;
+}
+
+/* Fluid Organic Floating Animations (0% CPU, pure transform compositing) */
+@keyframes ambient-orb-primary-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.85;
+  }
+  35% {
+    transform: translate3d(-30px, 20px, 0) scale(1.1);
+    opacity: 1;
+  }
+  70% {
+    transform: translate3d(18px, -15px, 0) scale(0.96);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(-12px, 35px, 0) scale(1.14);
+    opacity: 1;
+  }
+}
+
+@keyframes ambient-orb-secondary-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translate3d(35px, -25px, 0) scale(1.1);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate3d(-20px, 18px, 0) scale(0.94);
+    opacity: 0.8;
+  }
+}
+
+@keyframes ambient-orb-tertiary-pulse {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.95);
+    opacity: 0.65;
+  }
+  50% {
+    transform: translate3d(-18px, -12px, 0) scale(1.08);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(20px, 14px, 0) scale(1.02);
+    opacity: 0.75;
+  }
+}
+
+/* Mobile responsive orb adjustments */
+@media (max-width: 600px) {
+  .ambient-orb--primary {
+    top: 25%;
+    right: 2%;
+    width: 290px;
+    height: 290px;
+  }
+
+  .ambient-orb--secondary {
+    top: 5%;
+    left: -5%;
+    width: 250px;
+    height: 250px;
+  }
+
+  .ambient-orb--tertiary {
+    display: none;
+  }
+}
+
+/* Laser Sweep Keyframes */
+@keyframes mortar-laser-glide {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  90%, 100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes mortar-laser-vert-glide {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  70% {
+    opacity: 0.9;
+  }
+  85%, 100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Dark Theme Variant (for Calculator Hero and Dark Cards) */
+.architectural-grid-bg--dark {
+  mask-image: radial-gradient(ellipse 95% 90% at 50% 30%, black 50%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 95% 90% at 50% 30%, black 50%, transparent 100%);
+}
+
+.architectural-grid-bg--dark .grid-lines {
+  background-image:
+    linear-gradient(to right, rgb(215 169 76 / 8%) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(215 169 76 / 8%) 1px, transparent 1px);
+}
+
+.architectural-grid-bg--dark .grid-crosshairs {
+  background-image: radial-gradient(circle at 1px 1px, rgb(215 169 76 / 50%) 1.5px, transparent 0);
+}
+
+.architectural-grid-bg--dark .ambient-orb--primary {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgb(227 187 101 / 34%) 0%,
+    rgb(215 169 76 / 20%) 45%,
+    transparent 75%
+  );
+}
+
+.architectural-grid-bg--dark .ambient-orb--secondary {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgb(215 169 76 / 24%) 0%,
+    rgb(169 110 22 / 14%) 50%,
+    transparent 75%
+  );
+}
+
+.architectural-grid-bg--dark .ambient-orb--tertiary {
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgb(255 235 170 / 22%) 0%,
+    rgb(215 169 76 / 10%) 55%,
+    transparent 80%
+  );
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     scroll-behavior: auto !important;
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+  .grid-laser,
+  .grid-laser-vertical,
+  .ambient-orb {
+    animation: none !important;
   }
 }

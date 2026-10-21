@@ -51,6 +51,12 @@
 /* ==========================================================================
    Hero Section Animations (3D Float, Parallax, Editorial Headline Reveal)
    ========================================================================== */
+.hero-wrapper {
+  position: relative;
+  overflow: hidden;
+  background: var(--paper);
+}
+
 .hero {
   min-height: 600px;
   display: grid;
@@ -59,7 +65,8 @@
   gap: 3rem;
   padding-top: 2rem;
   padding-bottom: 3.5rem;
-  overflow: hidden;
+  position: relative;
+  z-index: 1;
 }
 
 .hero__copy {
