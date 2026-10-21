@@ -664,6 +664,45 @@
   margin-top: 3.5rem;
 }
 
+.calc-guide-link {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.calc-guide-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.4rem;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.calc-guide-link a strong {
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 0.9rem;
+}
+
+.calc-guide-link a:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgb(23 23 19 / 8%);
+}
+
+@media (max-width: 600px) {
+  .calc-guide-link a {
+    flex-direction: column;
+    gap: 0.35rem;
+    width: 100%;
+  }
+}
+
 /* ==========================================================================
    Process Section
    ========================================================================== */

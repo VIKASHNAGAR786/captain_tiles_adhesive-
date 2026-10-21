@@ -1,0 +1,65 @@
+<main class="calc-page">
+  <section class="calc-page__hero">
+    <div class="section-shell calc-page__hero-inner">
+      <a class="back-link" routerLink="/">← Back home</a>
+      <p class="eyebrow eyebrow--light">Smart Site Planning</p>
+      <h1>Adhesive Coverage &amp;<br /><em>Bag Calculator.</em></h1>
+      <p class="lead">
+        Accurately plan materials for ceramic, vitrified tiles, large slabs and wall cladding.
+        Minimize site wastage, estimate clean water requirement, and order direct from our Baran plant.
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Calculator Widget Container -->
+  <section class="section-shell calc-widget-section">
+    <app-calculator />
+  </section>
+
+  <!-- Technical Coverage & Notch Guidelines -->
+  <section class="section-shell calc-guidelines section-block">
+    <div class="section-heading">
+      <p class="eyebrow">Technical Guidelines</p>
+      <h2>Bed thickness &amp;<br /><em>coverage standards.</em></h2>
+      <p class="section-heading__note">
+        Real coverage depends on substrate flatness, notched trowel size, and tile back profile.
+      </p>
+    </div>
+
+    <div class="guidelines-grid">
+      @for (guide of guidelines; track guide.bed) {
+        <article class="guide-card">
+          <span class="guide-badge">{{ guide.bed }}</span>
+          <h3>{{ guide.tiles }}</h3>
+          <div class="guide-coverage">
+            <span class="guide-stat-label">Coverage Estimate</span>
+            <strong>{{ guide.coverage }}</strong>
+          </div>
+          <p>{{ guide.tip }}</p>
+        </article>
+      }
+    </div>
+
+    <div class="calc-tips-box">
+      <div class="calc-tips-box__icon">💡</div>
+      <div>
+        <h4>Pro Contractor Tip for Zero Wastage</h4>
+        <p>
+          Always calculate with an additional <strong>5% to 8% buffer</strong> to account for uneven subfloors, tile cutting waste, and trowel angle variation. For large format tiles (over 600×1200 mm), back-buttering each tile ensures 100% void-free coverage.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to action -->
+  <section class="calc-cta section-shell">
+    <div>
+      <p class="eyebrow">Need custom site estimation or bulk trade supply?</p>
+      <h2>Talk to our<br /><em>technical team.</em></h2>
+    </div>
+    <div class="calc-cta__actions">
+      <a class="button button--gold" href="https://wa.me/917976369073" target="_blank" rel="noopener">WhatsApp +91 7976369073 ↗</a>
+      <a class="button button--ghost" routerLink="/trade-enquiry">Trade enquiry ↗</a>
+    </div>
+  </section>
+</main>
