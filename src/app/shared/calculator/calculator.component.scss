@@ -1,0 +1,429 @@
+:host {
+  display: block;
+}
+
+.calc-card {
+  background: var(--ink);
+  color: white;
+  border-radius: 8px;
+  padding: clamp(1.75rem, 4vw, 3rem);
+  box-shadow: 0 24px 60px rgb(23 23 19 / 28%);
+  border: 1px solid rgb(215 169 76 / 25%);
+}
+
+.calc-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgb(255 255 255 / 12%);
+}
+
+.calc-eyebrow {
+  margin: 0;
+  color: var(--gold);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.calc-title {
+  margin: 0.4rem 0 0;
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  letter-spacing: -0.04em;
+  color: white;
+}
+
+.calc-badge {
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.calc-body {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.calc-field {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.calc-field__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.calc-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #c4beb4;
+}
+
+.calc-number-box {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgb(255 255 255 / 8%);
+  border: 1px solid rgb(215 169 76 / 40%);
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+}
+
+.calc-number-box input {
+  width: 90px;
+  background: transparent;
+  border: 0;
+  color: white;
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: right;
+  outline: none;
+}
+
+.calc-number-box span {
+  color: var(--gold);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* Custom Slider */
+.calc-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: rgb(255 255 255 / 15%);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  margin: 0.5rem 0;
+}
+
+.calc-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  box-shadow: 0 0 14px rgb(215 169 76 / 80%);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.calc-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: #f0c56d;
+}
+
+.calc-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 0;
+  cursor: pointer;
+  box-shadow: 0 0 14px rgb(215 169 76 / 80%);
+}
+
+/* Preset Chips */
+.calc-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.calc-chip {
+  padding: 0.5rem 0.85rem;
+  background: rgb(255 255 255 / 6%);
+  border: 1px solid rgb(255 255 255 / 12%);
+  color: #c9c3b8;
+  font-size: 0.72rem;
+  border-radius: 4px;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.2s ease;
+}
+
+.calc-chip:hover {
+  background: rgb(255 255 255 / 14%);
+  color: white;
+}
+
+.calc-chip--active {
+  background: rgb(215 169 76 / 20%);
+  border-color: var(--gold);
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* Tile Grid Options */
+.calc-grid-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+}
+
+.calc-option-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 1.1rem 1rem;
+  background: rgb(255 255 255 / 5%);
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.2s ease;
+}
+
+.calc-option-btn strong {
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.calc-option-btn small {
+  margin-top: 0.35rem;
+  color: #9f998e;
+  font-size: 0.72rem;
+}
+
+.calc-option-btn:hover {
+  border-color: rgb(215 169 76 / 60%);
+  background: rgb(255 255 255 / 8%);
+}
+
+.calc-option-btn--active {
+  border-color: var(--gold);
+  background: rgb(215 169 76 / 15%);
+  box-shadow: 0 0 16px rgb(215 169 76 / 18%);
+}
+
+.calc-option-btn--active strong {
+  color: var(--gold);
+}
+
+/* Product Tabs */
+.calc-product-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+}
+
+.calc-product-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.85rem 0.6rem;
+  background: rgb(255 255 255 / 4%);
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.2s ease;
+}
+
+.calc-product-grade {
+  color: var(--gold);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.calc-product-name {
+  margin-top: 0.25rem;
+  font-family: var(--display);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.calc-product-tab:hover {
+  background: rgb(255 255 255 / 8%);
+}
+
+.calc-product-tab--active {
+  border-color: var(--gold);
+  background: rgb(215 169 76 / 20%);
+}
+
+/* Results Display */
+.calc-result {
+  margin-top: 1rem;
+  padding: 1.75rem;
+  background: linear-gradient(145deg, #1f1e1a, #2a2720);
+  border: 1px solid rgb(215 169 76 / 45%);
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgb(0 0 0 / 25%);
+}
+
+.calc-result__main {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+.calc-result__stat {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.calc-result__number {
+  font-family: var(--display);
+  font-size: clamp(3.4rem, 6vw, 4.8rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--gold);
+  text-shadow: 0 2px 14px rgb(215 169 76 / 35%);
+}
+
+.calc-result__unit {
+  display: flex;
+  flex-direction: column;
+}
+
+.calc-result__unit strong {
+  font-size: 1.25rem;
+  font-family: var(--display);
+  letter-spacing: -0.02em;
+}
+
+.calc-result__unit small {
+  color: #a8a297;
+  font-size: 0.72rem;
+  margin-top: 0.2rem;
+}
+
+.calc-result__details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding-left: 2rem;
+  border-left: 1px solid rgb(255 255 255 / 15%);
+}
+
+.calc-sub-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.calc-sub-stat span {
+  color: #9f998e;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.calc-sub-stat strong {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  color: white;
+}
+
+.calc-cta-row {
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgb(255 255 255 / 12%);
+}
+
+.calc-whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 52px;
+  padding: 1rem 1.5rem;
+  background: #1f9d60;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  touch-action: manipulation;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 20px rgb(31 157 96 / 35%);
+}
+
+.calc-whatsapp-btn:hover {
+  background: #25b36e;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgb(31 157 96 / 45%);
+}
+
+.calc-whatsapp-btn svg {
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .calc-grid-options {
+    grid-template-columns: 1fr;
+  }
+
+  .calc-product-tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .calc-result__main {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .calc-result__details {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid rgb(255 255 255 / 12%);
+    padding-top: 1.25rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .calc-card {
+    padding: 1.25rem;
+  }
+
+  .calc-card__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .calc-result__details {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .calc-whatsapp-btn {
+    font-size: 0.78rem;
+    padding: 0.9rem 1rem;
+    text-align: center;
+  }
+}

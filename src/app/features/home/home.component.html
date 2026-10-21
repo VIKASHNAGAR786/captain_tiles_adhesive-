@@ -2,23 +2,39 @@
   <section class="hero section-shell">
     <div class="hero__copy">
       <p class="eyebrow location-eyebrow"><span aria-hidden="true">⌖</span> Made in Baran, Rajasthan</p>
-      <h1>Strong bonds.<br /><em>Beautiful spaces.</em></h1>
+      
+      <h1 class="hero__headline">
+        <span class="reveal-line"><span class="reveal-inner">Strong bonds.</span></span>
+        <span class="reveal-line"><span class="reveal-inner"><em>Beautiful spaces.</em></span></span>
+      </h1>
+
       <p class="hero__intro">Reliable tile adhesive engineered to help professionals create durable, beautiful spaces.</p>
+      
       <div class="hero__actions">
         <a class="button button--dark" routerLink="/products">Explore our products <span>↗</span></a>
-        <a class="button button--ghost" href="https://wa.me/917976369073" target="_blank" rel="noopener">Talk to our team <span>→</span></a>
+        <a class="button button--gold" href="#calculator">Calculate bags <span>↓</span></a>
+        <a class="button button--ghost" href="https://wa.me/917976369073" target="_blank" rel="noopener">Talk on WhatsApp <span>→</span></a>
       </div>
+
       <div class="hero__proof">
         <span class="proof-mark">✦</span>
         <span>Reliable bonding <i>·</i> Easy application <i>·</i> Multiple tile solutions</span>
       </div>
     </div>
     
-    <div class="hero__visual">
+    <div
+      class="hero__visual"
+      (mousemove)="onHeroMouseMove($event)"
+      (mouseleave)="onHeroMouseLeave()"
+      [style.--tilt-x]="tiltX() + 'deg'"
+      [style.--tilt-y]="tiltY() + 'deg'"
+      [class.is-tilting]="isHoveringHero()"
+    >
       <div class="hero__halo"></div>
       <img
         src="/assets/images/products/captain-dura-bond-bag.jpeg"
         alt="Captain Dura Bond tile adhesive 20 kilogram bag"
+        class="hero__bag-img"
         width="430"
         height="430"
         fetchpriority="high"
@@ -45,7 +61,11 @@
       </div>
     </div>
     @if (products[selectedProduct()]; as product) {
-      <article class="product-card product-card--featured" [class.product-card--pink]="selectedProduct() === 1">
+      <article
+        class="product-card product-card--featured"
+        [class.product-card--pink]="selectedProduct() === 1"
+        [class.is-card-animating]="isCardAnimating()"
+      >
         <div class="product-card__image">
           <img
             [src]="product.image"
@@ -109,6 +129,23 @@
       <p>A polymer-modified thin-set adhesive designed for ceramic, vitrified and porcelain tiles on horizontal and vertical surfaces.</p>
       <div class="tag-row"><span>Interior + exterior</span><span>Wall + floor</span><span>20 kg</span></div>
       <a class="button button--gold" routerLink="/products/captain-dura-bond">View product details <span>↗</span></a>
+    </div>
+  </section>
+
+  <!-- Interactive Tile Adhesive Coverage Calculator -->
+  <section class="section-shell section-block" id="calculator" aria-label="Adhesive requirement calculator">
+    <div class="section-heading section-heading--row">
+      <div>
+        <p class="eyebrow">Interactive Estimator</p>
+        <h2>Plan your project.<br /><em>Calculate exact bags.</em></h2>
+      </div>
+      <p class="section-heading__note">
+        Instant calculation for ceramic, vitrified tiles and heavy slabs.<br />
+        Direct manufacturer support and dispatch from Baran.
+      </p>
+    </div>
+    <div class="calculator-container">
+      <app-calculator />
     </div>
   </section>
 

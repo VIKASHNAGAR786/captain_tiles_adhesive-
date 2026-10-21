@@ -27,6 +27,13 @@
   letter-spacing: -0.05em;
 }
 
+.section-heading h2 em,
+.hero h1 em,
+.cta h2 em {
+  color: var(--gold-deep);
+  font-style: normal;
+}
+
 .section-heading--row {
   display: flex;
   justify-content: space-between;
@@ -41,7 +48,9 @@
   line-height: 1.6;
 }
 
-/* Hero Section */
+/* ==========================================================================
+   Hero Section Animations (3D Float, Parallax, Editorial Headline Reveal)
+   ========================================================================== */
 .hero {
   min-height: 600px;
   display: grid;
@@ -69,7 +78,7 @@
   font-size: 1rem;
 }
 
-.hero h1 {
+.hero__headline {
   max-width: 620px;
   margin: 1rem 0 1.5rem;
   font-size: clamp(3.2rem, 6.5vw, 6.5rem);
@@ -77,10 +86,50 @@
   letter-spacing: -0.06em;
 }
 
-.hero h1 em,
-h2 em {
-  color: var(--gold-deep);
-  font-style: normal;
+/* Masked Title Wipe-In */
+.reveal-line {
+  display: block;
+  overflow: hidden;
+}
+
+.reveal-inner {
+  display: block;
+  animation: title-rise 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.reveal-line:nth-child(2) .reveal-inner {
+  animation-delay: 0.15s;
+}
+
+@keyframes title-rise {
+  from {
+    opacity: 0;
+    transform: translateY(115%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Metallic Gold Sheen Sweep on Headline */
+.hero h1 em {
+  display: inline-block;
+  background: linear-gradient(110deg, #a96e16 0%, #d7a94c 28%, #fff5db 45%, #d7a94c 65%, #a96e16 100%);
+  background-size: 220% 100%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: gold-sweep 6s ease-in-out infinite;
+}
+
+@keyframes gold-sweep {
+  0%, 15% {
+    background-position: -150% 0;
+  }
+  50%, 100% {
+    background-position: 150% 0;
+  }
 }
 
 .hero__intro {
@@ -95,6 +144,7 @@ h2 em {
   align-items: center;
   gap: 1rem;
   margin-top: 2.4rem;
+  flex-wrap: wrap;
 }
 
 .hero__proof {
@@ -126,14 +176,18 @@ h2 em {
   border-radius: 50%;
 }
 
+/* 3D Parallax Visual */
 .hero__visual {
   position: relative;
   min-height: 480px;
   display: grid;
   place-items: center;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  touch-action: manipulation;
 }
 
-.hero__visual img {
+.hero__bag-img {
   position: relative;
   z-index: 2;
   width: min(72%, 430px);
@@ -141,6 +195,25 @@ h2 em {
   aspect-ratio: 1 / 1;
   object-fit: contain;
   filter: drop-shadow(25px 30px 20px rgb(37 28 18 / 22%));
+  transform: perspective(1000px) rotateY(var(--tilt-x, 0deg)) rotateX(var(--tilt-y, 0deg));
+  transition: transform 0.18s ease-out, filter 0.3s ease;
+  will-change: transform;
+}
+
+/* Weightless floating animation when mouse is not tilting */
+.hero__visual:not(.is-tilting) .hero__bag-img {
+  animation: hero-bag-float 5.5s ease-in-out infinite;
+}
+
+@keyframes hero-bag-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    filter: drop-shadow(25px 30px 20px rgb(37 28 18 / 22%));
+  }
+  50% {
+    transform: translateY(-12px) rotate(1deg);
+    filter: drop-shadow(30px 44px 28px rgb(37 28 18 / 16%));
+  }
 }
 
 .hero__halo {
@@ -149,6 +222,19 @@ h2 em {
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   background: radial-gradient(circle at 40% 35%, #e8c47b, #c69038 62%, #916323);
+  transition: transform 0.3s ease-out;
+  animation: halo-pulse 6s ease-in-out infinite;
+}
+
+@keyframes halo-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
 }
 
 .hero__label {
@@ -163,6 +249,11 @@ h2 em {
   color: white;
   transform: rotate(-5deg);
   box-shadow: 12px 14px 0 var(--gold);
+  transition: transform 0.3s ease;
+}
+
+.hero__visual:hover .hero__label {
+  transform: rotate(-3deg) scale(1.04);
 }
 
 .hero__label span {
@@ -182,7 +273,9 @@ h2 em {
   font-size: 0.7rem;
 }
 
-/* Catalogue Carousel */
+/* ==========================================================================
+   Catalogue Carousel & Transitions
+   ========================================================================== */
 .catalogue--hero {
   padding-top: 4.5rem;
 }
@@ -231,6 +324,23 @@ h2 em {
   margin-top: 1rem;
   background: var(--paper);
   border: 1px solid var(--line);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Smooth Card Transition when Switching Products */
+.is-card-animating {
+  animation: card-glide 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes card-glide {
+  0% {
+    opacity: 0.35;
+    transform: scale(0.97) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .product-card--featured .product-card__image {
@@ -239,6 +349,7 @@ h2 em {
   place-items: center;
   overflow: hidden;
   background: #d2b37e;
+  transition: background 0.4s ease;
 }
 
 .product-card--featured .product-card__image img {
@@ -247,6 +358,11 @@ h2 em {
   aspect-ratio: 1 / 1;
   object-fit: contain;
   padding: 2rem;
+  transition: transform 0.5s ease;
+}
+
+.product-card--featured:hover .product-card__image img {
+  transform: scale(1.05) rotate(1.5deg);
 }
 
 .product-card--pink .product-card__image {
@@ -296,7 +412,9 @@ h2 em {
   text-transform: uppercase;
 }
 
-/* Trust Strip */
+/* ==========================================================================
+   Trust Strip
+   ========================================================================== */
 .trust-strip {
   background: var(--ink);
   color: white;
@@ -334,7 +452,9 @@ h2 em {
   line-height: 1.4;
 }
 
-/* Intro Band */
+/* ==========================================================================
+   Intro Band
+   ========================================================================== */
 .intro-band {
   background: var(--ink);
   color: white;
@@ -364,7 +484,9 @@ h2 em {
   line-height: 1.7;
 }
 
-/* Benefits Grid */
+/* ==========================================================================
+   Benefits Grid
+   ========================================================================== */
 .benefit-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -378,6 +500,12 @@ h2 em {
   min-height: 230px;
   padding: 2rem;
   background: var(--paper);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.benefit-card:hover {
+  background: #f0ebe2;
+  transform: translateY(-4px);
 }
 
 .benefit-card > span {
@@ -397,7 +525,9 @@ h2 em {
   line-height: 1.7;
 }
 
-/* Product Feature Section */
+/* ==========================================================================
+   Product Feature Section
+   ========================================================================== */
 .product-feature {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -476,6 +606,11 @@ h2 em {
   font-weight: 700;
   line-height: 1;
   text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.product-feature:hover .product-feature__seal {
+  transform: rotate(15deg) scale(1.08);
 }
 
 .product-feature__seal small {
@@ -522,7 +657,16 @@ h2 em {
   letter-spacing: 0.08em;
 }
 
-/* Process Section */
+/* ==========================================================================
+   Calculator Section Container
+   ========================================================================== */
+.calculator-container {
+  margin-top: 3.5rem;
+}
+
+/* ==========================================================================
+   Process Section
+   ========================================================================== */
 .process {
   background: #eae4da;
 }
@@ -538,6 +682,11 @@ h2 em {
   min-height: 150px;
   padding: 1.5rem 1rem 0 0;
   border-right: 1px solid #c8c0b4;
+  transition: transform 0.25s ease;
+}
+
+.process-step:hover {
+  transform: translateY(-4px);
 }
 
 .process-step:not(:first-child) {
@@ -557,7 +706,9 @@ h2 em {
   line-height: 1.1;
 }
 
-/* CTA Section */
+/* ==========================================================================
+   CTA Section
+   ========================================================================== */
 .cta {
   display: flex;
   justify-content: space-between;
@@ -574,7 +725,9 @@ h2 em {
   letter-spacing: -0.06em;
 }
 
-/* Responsive Breakpoints */
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
 @media (max-width: 800px) {
   .hero {
     grid-template-columns: 1fr;
@@ -636,7 +789,7 @@ h2 em {
 }
 
 @media (max-width: 520px) {
-  .hero h1 {
+  .hero__headline {
     font-size: 2.8rem;
   }
 
