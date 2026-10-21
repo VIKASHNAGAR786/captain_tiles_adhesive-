@@ -38,7 +38,13 @@
     delete sessionStorage.redirect;
     if (redirect && redirect !== location.href) history.replaceState(null, '', redirect);
   </script>
-  <link rel="icon" type="image/jpeg" href="assets/images/brand/captain-logo.jpeg">
+  <!-- Favicon & Search Engine Branding (Googlebot-Favicons Standards) -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/brand/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/brand/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/brand/favicon-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/brand/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
   <app-root></app-root>
