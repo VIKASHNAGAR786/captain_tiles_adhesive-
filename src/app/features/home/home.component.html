@@ -42,18 +42,53 @@
       [style.--tilt-y]="tiltY() + 'deg'"
       [class.is-tilting]="isHoveringHero()"
     >
-      <div class="hero__halo"></div>
       <img
-        src="/assets/images/products/captain-dura-bond-bag.jpeg"
+        src="/assets/images/products/captain-dura-bond-bag-white.jpg"
         alt="Captain Dura Bond tile adhesive 20 kilogram bag"
         class="hero__bag-img"
-        width="430"
-        height="430"
+        width="410"
+        height="683"
         fetchpriority="high"
         loading="eager"
         decoding="async"
       />
-      <div class="hero__label"><span>CAPTAIN</span><strong>DURA BOND</strong><small>Tile adhesive · 20 kg</small></div>
+    </div>
+  </div>
+
+  <div class="hero-showcase section-shell">
+    <div class="showcase-card">
+      <div class="showcase-card__header">
+        <div class="showcase-badge">
+          <span class="badge-dot"></span>
+          <span>CAPTAIN MASTER RANGE</span>
+        </div>
+        <span class="showcase-tagline">Complete 4-Product Lineup · 4X Stronger Bond</span>
+      </div>
+
+      <div class="showcase-card__visual">
+        <img
+          src="/assets/images/brand/captain-cover-banner.jpg"
+          alt="Captain Tiles Adhesive full product line: Dura Bond, Dura Grip, Dura Stick, and Dura Shield"
+          class="showcase-card__img"
+          width="1024"
+          height="512"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+
+      <div class="showcase-card__footer">
+        <div class="showcase-pills">
+          <span class="pill"><span class="pill-icon">✦</span> High Flexibility</span>
+          <span class="pill"><span class="pill-icon">✦</span> Water Resistant</span>
+          <span class="pill"><span class="pill-icon">✦</span> Superior Grip</span>
+          <span class="pill"><span class="pill-icon">✦</span> Heavy Duty</span>
+          <span class="pill"><span class="pill-icon">✦</span> Easy Application</span>
+        </div>
+        <a class="showcase-link" routerLink="/products">
+          Compare all 4 formulations <span>↗</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>

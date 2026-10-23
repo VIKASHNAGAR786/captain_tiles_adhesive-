@@ -183,7 +183,7 @@
   border-radius: 50%;
 }
 
-/* 3D Parallax Visual */
+/* Clean Product Showcase Visual (Clean White Background) */
 .hero__visual {
   position: relative;
   min-height: 480px;
@@ -192,92 +192,197 @@
   perspective: 1000px;
   transform-style: preserve-3d;
   touch-action: manipulation;
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid rgba(23, 23, 19, 0.07);
+  box-shadow: 0 16px 44px -12px rgba(23, 23, 19, 0.05), 0 0 0 1px rgba(215, 169, 76, 0.08);
+  padding: 2.5rem 2rem;
+  overflow: hidden;
 }
 
 .hero__bag-img {
   position: relative;
   z-index: 2;
-  width: min(72%, 430px);
+  width: min(85%, 380px);
+  max-height: 520px;
   height: auto;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 615 / 1024;
   object-fit: contain;
-  filter: drop-shadow(25px 30px 20px rgb(37 28 18 / 22%));
   transform: perspective(1000px) rotateY(var(--tilt-x, 0deg)) rotateX(var(--tilt-y, 0deg));
-  transition: transform 0.18s ease-out, filter 0.3s ease;
+  transition: transform 0.18s ease-out;
   will-change: transform;
 }
 
-/* Weightless floating animation when mouse is not tilting */
+/* Subtle gentle floating animation when mouse is not tilting */
 .hero__visual:not(.is-tilting) .hero__bag-img {
-  animation: hero-bag-float 5.5s ease-in-out infinite;
+  animation: hero-bag-float 6s ease-in-out infinite;
 }
 
 @keyframes hero-bag-float {
   0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-    filter: drop-shadow(25px 30px 20px rgb(37 28 18 / 22%));
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(-12px) rotate(1deg);
-    filter: drop-shadow(30px 44px 28px rgb(37 28 18 / 16%));
+    transform: translateY(-8px);
   }
 }
 
-.hero__halo {
-  position: absolute;
-  width: min(80%, 570px);
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  background: radial-gradient(circle at 40% 35%, #e8c47b, #c69038 62%, #916323);
-  transition: transform 0.3s ease-out;
-  animation: halo-pulse 6s ease-in-out infinite;
+/* ==========================================================================
+   Master Range Showcase (Hero to Catalogue Bridge)
+   ========================================================================== */
+.hero-showcase {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 3.5rem;
+  margin-top: 1rem;
 }
 
-@keyframes halo-pulse {
+.showcase-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(23, 23, 19, 0.09);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 44px -10px rgba(23, 23, 19, 0.08), 0 0 0 1px rgba(215, 169, 76, 0.15);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 24px 56px -10px rgba(23, 23, 19, 0.12), 0 0 0 1px rgba(215, 169, 76, 0.3);
+  }
+}
+
+.showcase-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.6rem;
+  background: #fbf9f5;
+  border-bottom: 1px solid rgba(23, 23, 19, 0.06);
+}
+
+.showcase-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--display);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold-deep);
+  box-shadow: 0 0 0 3px rgba(215, 169, 76, 0.25);
+  animation: badge-pulse 2.2s infinite;
+}
+
+@keyframes badge-pulse {
   0%, 100% {
     transform: scale(1);
-    opacity: 0.9;
+    opacity: 0.85;
   }
   50% {
-    transform: scale(1.04);
+    transform: scale(1.2);
     opacity: 1;
+    box-shadow: 0 0 0 5px rgba(215, 169, 76, 0.35);
   }
 }
 
-.hero__label {
-  position: absolute;
-  z-index: 3;
-  right: 3%;
-  bottom: 11%;
-  display: grid;
-  gap: 0.25rem;
-  padding: 1.2rem 1.4rem;
-  background: var(--ink);
-  color: white;
-  transform: rotate(-5deg);
-  box-shadow: 12px 14px 0 var(--gold);
-  transition: transform 0.3s ease;
+.showcase-tagline {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
-.hero__visual:hover .hero__label {
-  transform: rotate(-3deg) scale(1.04);
+.showcase-card__visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1024 / 512;
+  background: #f5f2ea;
+  overflow: hidden;
 }
 
-.hero__label span {
-  color: var(--gold);
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
+.showcase-card__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hero__label strong {
-  font-family: var(--display);
-  font-size: 1.3rem;
-  letter-spacing: 0.08em;
+.showcase-card:hover .showcase-card__img {
+  transform: scale(1.015);
 }
 
-.hero__label small {
-  color: #bdb7ad;
+.showcase-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.1rem 1.6rem;
+  background: #ffffff;
+  border-top: 1px solid rgba(23, 23, 19, 0.06);
+  flex-wrap: wrap;
+}
+
+.showcase-pills {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  background: #f8f6f1;
+  border: 1px solid rgba(23, 23, 19, 0.06);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+
+.pill-icon {
+  color: var(--gold-deep);
   font-size: 0.7rem;
+}
+
+.showcase-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--gold-deep);
+  font-family: var(--display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+
+  span {
+    transition: transform 0.2s ease;
+  }
+
+  &:hover {
+    color: var(--ink);
+
+    span {
+      transform: translate(2px, -2px);
+    }
+  }
 }
 
 /* ==========================================================================
@@ -789,6 +894,30 @@
     margin-top: 2.5rem;
   }
 
+  .hero-showcase {
+    padding-bottom: 2.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .showcase-card__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    padding: 0.9rem 1.2rem;
+  }
+
+  .showcase-card__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+  }
+
+  .showcase-link {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
   .product-card--featured {
     grid-template-columns: 1fr;
     grid-template-rows: minmax(380px, 50vh) auto;
@@ -840,18 +969,32 @@
   }
 
   .hero__visual {
-    min-height: 340px;
+    min-height: 320px;
     margin-top: -0.5rem;
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
   }
 
   .hero__visual img {
-    width: 82%;
+    width: min(88%, 280px);
+    max-height: 360px;
   }
 
-  .hero__label {
-    right: 0;
-    bottom: 4%;
-    padding: 0.9rem 1.1rem;
+  .hero-showcase {
+    padding-bottom: 2rem;
+  }
+
+  .showcase-card {
+    border-radius: 12px;
+  }
+
+  .showcase-pills {
+    gap: 0.35rem;
+  }
+
+  .pill {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.55rem;
   }
 
   .hero__actions {

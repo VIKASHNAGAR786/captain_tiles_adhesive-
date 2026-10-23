@@ -41,7 +41,7 @@ export class CalculatorPageComponent implements OnInit, OnDestroy {
       keywords: 'tile adhesive calculator, tile coverage calculator, 20kg bag tile adhesive coverage, captain adhesive Baran calculator, square feet to bags',
       path: '/calculator/',
       ogType: 'website',
-      ogImage: '/assets/images/products/captain-dura-bond-bag.jpeg',
+      ogImage: '/assets/images/brand/captain-cover-banner.jpg',
     });
 
     const breadcrumbs = this.seo.getBreadcrumbsSchema([

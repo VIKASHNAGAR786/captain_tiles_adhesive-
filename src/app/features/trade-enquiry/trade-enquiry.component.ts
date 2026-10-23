@@ -19,7 +19,7 @@ export class TradeEnquiryComponent implements OnInit, OnDestroy {
       keywords: 'tile adhesive dealership, tile adhesive distributor, contractor discount, Captain adhesive Baran trade',
       path: '/trade-enquiry/',
       ogType: 'website',
-      ogImage: '/assets/images/products/captain-dura-bond-bag.jpeg',
+      ogImage: '/assets/images/brand/captain-cover-banner.jpg',
     });
 
     const breadcrumbs = this.seo.getBreadcrumbsSchema([

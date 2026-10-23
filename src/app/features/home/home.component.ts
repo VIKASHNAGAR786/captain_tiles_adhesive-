@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       keywords: 'tile adhesive, Captain tiles adhesive, tile adhesive manufacturer Baran, tile chemical Rajasthan, dura bond, ceramic tile adhesive, vitrified tile adhesive',
       path: '/',
       ogType: 'website',
-      ogImage: '/assets/images/products/captain-dura-bond-bag.jpeg',
+      ogImage: '/assets/images/brand/captain-cover-banner.jpg',
     });
 
     // Structured data

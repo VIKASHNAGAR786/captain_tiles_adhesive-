@@ -18,7 +18,7 @@ export class AboutComponent implements OnInit, OnDestroy {
       keywords: 'about Captain tiles adhesive, tile adhesive plant Baran, Patel Sons Enterprises, tile adhesive manufacturer Rajasthan',
       path: '/about/',
       ogType: 'website',
-      ogImage: '/assets/images/products/captain-dura-bond-bag.jpeg',
+      ogImage: '/assets/images/brand/captain-cover-banner.jpg',
     });
 
     const breadcrumbSchema = this.seo.getBreadcrumbsSchema([

@@ -24,7 +24,7 @@ export class BlogComponent implements OnInit, OnDestroy {
       keywords: 'tile installation guide, tile adhesive guide, how to apply tile adhesive, Captain adhesive journal',
       path: '/blog/',
       ogType: 'website',
-      ogImage: '/assets/images/products/captain-dura-bond-bag.jpeg',
+      ogImage: '/assets/images/brand/captain-cover-banner.jpg',
     });
 
     const breadcrumbs = this.seo.getBreadcrumbsSchema([
