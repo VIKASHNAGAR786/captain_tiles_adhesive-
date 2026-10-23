@@ -42,16 +42,46 @@
       [style.--tilt-y]="tiltY() + 'deg'"
       [class.is-tilting]="isHoveringHero()"
     >
-      <img
-        src="/assets/images/products/captain-dura-bond-bag-white.jpg"
-        alt="Captain Dura Bond tile adhesive 20 kilogram bag"
-        class="hero__bag-img"
-        width="410"
-        height="683"
-        fetchpriority="high"
-        loading="eager"
-        decoding="async"
-      />
+      <!-- Architectural Corner Reticles -->
+      <span class="card-reticle card-reticle--tl" aria-hidden="true"></span>
+      <span class="card-reticle card-reticle--tr" aria-hidden="true"></span>
+      <span class="card-reticle card-reticle--bl" aria-hidden="true"></span>
+      <span class="card-reticle card-reticle--br" aria-hidden="true"></span>
+
+      <!-- Micro Technical Header Bar -->
+      <div class="card-spec-bar">
+        <span class="card-spec-item">
+          <span class="spec-dot"></span>
+          <span>SPEC // TYPE 1 C1TE</span>
+        </span>
+        <span class="card-spec-item card-spec-item--mute">BARAN, RAJASTHAN</span>
+      </div>
+
+      <!-- Studio Lighting & Contact Floor Shadow -->
+      <div class="studio-lighting" aria-hidden="true">
+        <div class="studio-spotlight"></div>
+        <div class="studio-floor-shadow"></div>
+      </div>
+
+      <!-- Transparent 3D Bag with Layered Depth -->
+      <div class="hero__bag-frame">
+        <img
+          src="/assets/images/products/captain-dura-bond-bag.png"
+          alt="Captain Dura Bond tile adhesive 20 kilogram bag"
+          class="hero__bag-img"
+          width="410"
+          height="683"
+          fetchpriority="high"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+
+      <!-- Micro Technical Footer Bar -->
+      <div class="card-foot-bar">
+        <span class="card-foot-text">✦ 20 KG NET WEIGHT</span>
+        <span class="card-foot-badge">POLYMER MODIFIED</span>
+      </div>
     </div>
   </div>
 
@@ -164,19 +194,100 @@
     </div>
   </section>
 
-  <section class="product-feature section-shell section-block">
-    <div class="product-feature__visual" aria-label="Captain Dura Bond product benefits">
-      <div class="product-feature__visual-top"><span>CAPTAIN</span><strong>DURA BOND</strong><small>Tile adhesive · 20 kg</small></div>
-      <div class="product-feature__tile-grid" aria-hidden="true"></div>
-      <div class="product-feature__seal">01<br /><small>THE<br />CAPTAIN<br />STANDARD</small></div>
-      <div class="product-feature__visual-bottom"><span>STRONG BONDING</span><span>WALL + FLOOR</span><span>MADE IN INDIA</span></div>
+  <section class="product-feature section-shell section-block" aria-label="Captain Dura Bond featured product">
+    <div class="product-feature__visual" aria-label="Captain Dura Bond product showcase">
+      <!-- Architectural Corner Reticles -->
+      <span class="feature-reticle feature-reticle--tl" aria-hidden="true"></span>
+      <span class="feature-reticle feature-reticle--tr" aria-hidden="true"></span>
+      <span class="feature-reticle feature-reticle--bl" aria-hidden="true"></span>
+      <span class="feature-reticle feature-reticle--br" aria-hidden="true"></span>
+
+      <!-- Card Top Bar: Badge & Quality Seal -->
+      <div class="feature-card__top">
+        <div class="feature-card__badge">
+          <span class="feature-card__dot"></span>
+          <span>CAPTAIN DURA BOND</span>
+        </div>
+        <div class="feature-card__seal">
+          <strong>01</strong>
+          <span>THE CAPTAIN<br />STANDARD</span>
+        </div>
+      </div>
+
+      <!-- Center 3D Stage: Real Product Bag & Feature Highlights -->
+      <div class="feature-card__stage">
+        <div class="feature-card__spotlight" aria-hidden="true"></div>
+        <div class="feature-card__floor-shadow" aria-hidden="true"></div>
+        
+        <img
+          src="/assets/images/products/captain-dura-bond-bag.png"
+          alt="Captain Dura Bond 20kg tile adhesive bag showcase"
+          class="feature-card__bag-img"
+          width="410"
+          height="683"
+          loading="lazy"
+          decoding="async"
+        />
+
+        <div class="feature-card__highlights">
+          <div class="highlight-item">
+            <span class="highlight-bullet">✦</span>
+            <div>
+              <strong>4X Stronger Bond</strong>
+              <small>C1TE polymer modified</small>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-bullet">✦</span>
+            <div>
+              <strong>Zero Vertical Slip</strong>
+              <small>Confident wall & floor fixing</small>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-bullet">✦</span>
+            <div>
+              <strong>Water & Weather Proof</strong>
+              <small>Interior & exterior ready</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card Bottom Bar: Technical Specification Chips -->
+      <div class="feature-card__bottom">
+        <span class="spec-pill">20 kg Bag</span>
+        <span class="spec-pill">Wall + Floor</span>
+        <span class="spec-pill">Ceramic & Vitrified</span>
+        <span class="spec-pill spec-pill--gold">Made in India</span>
+      </div>
     </div>
+
     <div class="product-feature__copy">
-      <p class="eyebrow">Featured product / 01</p>
+      <p class="eyebrow location-eyebrow"><span aria-hidden="true">⌖</span> Featured product // 01</p>
       <h2>Captain Tiles Adhesive<br /><em>Dura Bond.</em></h2>
-      <p>A polymer-modified thin-set adhesive designed for ceramic, vitrified and porcelain tiles on horizontal and vertical surfaces.</p>
-      <div class="tag-row"><span>Interior + exterior</span><span>Wall + floor</span><span>20 kg</span></div>
-      <a class="button button--gold" routerLink="/products/captain-dura-bond">View product details <span>↗</span></a>
+      <p>A premium polymer-modified thin-set adhesive engineered for ceramic, vitrified and porcelain tiles on horizontal and vertical surfaces. Built for long-lasting structural bond strength and easy jobsite troweling.</p>
+      
+      <!-- Performance Metrics Grid -->
+      <div class="feature-metrics">
+        <div class="metric-card">
+          <strong>~45–50 <small>sq.ft</small></strong>
+          <span>Coverage / 20kg</span>
+        </div>
+        <div class="metric-card">
+          <strong>24 <small>Hours</small></strong>
+          <span>Final Setting Time</span>
+        </div>
+        <div class="metric-card">
+          <strong>Type 1</strong>
+          <span>IS 15477:2019</span>
+        </div>
+      </div>
+
+      <div class="product-feature__actions">
+        <a class="button button--gold" routerLink="/products/captain-dura-bond">View specifications <span>↗</span></a>
+        <a class="button button--ghost" href="https://wa.me/917976369073" target="_blank" rel="noopener">Order on WhatsApp <span>→</span></a>
+      </div>
     </div>
   </section>
 
