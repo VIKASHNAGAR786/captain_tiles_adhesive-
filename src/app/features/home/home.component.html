@@ -132,7 +132,19 @@
       <p class="section-heading__note">Explore our four products<br />and their applications.</p>
     </div>
     <div class="catalogue-controls">
-      <span>0{{ selectedProduct() + 1 }} <i>/</i> 0{{ products.length }}</span>
+      <div class="catalogue-indicators">
+        @for (prod of products; track prod.slug; let i = $index) {
+          <button
+            type="button"
+            class="catalogue-dot"
+            [class.is-active]="selectedProduct() === i"
+            (click)="selectProduct(i)"
+            [attr.aria-label]="'Go to product ' + prod.name"
+          >
+            <span>0{{ i + 1 }}</span>
+          </button>
+        }
+      </div>
       <div>
         <button type="button" class="carousel-button" (click)="showPreviousProduct()" aria-label="Previous product">←</button>
         <button type="button" class="carousel-button" (click)="showNextProduct()" aria-label="Next product">→</button>
@@ -141,13 +153,17 @@
     @if (products[selectedProduct()]; as product) {
       <article
         class="product-card product-card--featured"
-        [class.product-card--pink]="selectedProduct() === 1"
         [class.is-card-animating]="isCardAnimating()"
+        [class.anim-next]="isCardAnimating() && animationDirection() === 'next'"
+        [class.anim-prev]="isCardAnimating() && animationDirection() === 'prev'"
       >
         <div class="product-card__image">
+          <div class="product-card__stage-spotlight" aria-hidden="true"></div>
+          <div class="product-card__stage-shadow" aria-hidden="true"></div>
           <img
             [src]="product.image"
             [alt]="'Captain ' + product.name + ' tile adhesive bag'"
+            class="product-card__bag"
             width="400"
             height="400"
             loading="lazy"
@@ -155,7 +171,7 @@
           />
         </div>
         <div class="product-card__body">
-          <span>{{ product.number }} / {{ product.grade }}</span>
+          <span class="product-card__grade">{{ product.number }} / {{ product.grade }}</span>
           <h3>Captain<br /><em>{{ product.name }}</em></h3>
           <p>{{ product.description }}</p>
           <div class="product-card__meta">

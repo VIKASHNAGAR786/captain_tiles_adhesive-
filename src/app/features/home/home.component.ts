@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   readonly products = PRODUCTS;
   readonly selectedProduct = signal(0);
   readonly isCardAnimating = signal(false);
+  readonly animationDirection = signal<'next' | 'prev'>('next');
 
   // 3D Parallax Tilt state
   readonly tiltX = signal(0);
@@ -69,20 +70,32 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.tiltY.set(0);
   }
 
-  showPreviousProduct(): void {
+  selectProduct(index: number): void {
+    if (index === this.selectedProduct()) return;
+    this.animationDirection.set(index > this.selectedProduct() ? 'next' : 'prev');
+    this.selectedProduct.set(index);
     this.triggerCardAnimation();
+  }
+
+  showPreviousProduct(): void {
+    this.animationDirection.set('prev');
     this.selectedProduct.update((index) => (index - 1 + this.products.length) % this.products.length);
+    this.triggerCardAnimation();
   }
 
   showNextProduct(): void {
-    this.triggerCardAnimation();
+    this.animationDirection.set('next');
     this.selectedProduct.update((index) => (index + 1) % this.products.length);
+    this.triggerCardAnimation();
   }
 
   private triggerCardAnimation(): void {
-    this.isCardAnimating.set(true);
-    setTimeout(() => {
-      this.isCardAnimating.set(false);
-    }, 350);
+    this.isCardAnimating.set(false);
+    requestAnimationFrame(() => {
+      this.isCardAnimating.set(true);
+      setTimeout(() => {
+        this.isCardAnimating.set(false);
+      }, 550);
+    });
   }
 }
